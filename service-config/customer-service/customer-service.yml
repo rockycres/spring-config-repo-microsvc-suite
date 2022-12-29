@@ -12,7 +12,7 @@ spring:
 
     datasource:
         password: postgres
-        url: jdbc:postgresql://localhost:5433/customer
+        url: jdbc:postgresql://localhost:5432/travel
         username: postgres
     jpa:
         hibernate:
@@ -50,7 +50,7 @@ server:
         enabled: true
         mime-types: application/json,application/xml,text/html,text/xml,text/plain,application/javascript,text/css
         min-response-size: 2048
-    port: 8040
+    port: 8050
 
 eureka:
     client:
