@@ -1,0 +1,63 @@
+spring:
+    application:
+        name: travel-service
+
+    data:
+        web:
+            pageable:
+                max-page-size: 100
+                page-parameter: 'page '
+                size-parameter: 'size '
+
+
+    datasource:
+        password: postgres
+        url: jdbc:postgresql://localhost:5432/travels
+        username: postgres
+    jpa:
+        hibernate:
+            ddl-auto: none
+        properties:
+            hibernate:
+                format_sql: true
+                show_sql: true
+                type: trace
+                use_sql_comments: true
+    mvc:
+        resources:
+            add-mappings: false
+        throw-exception-if-no-handler-found: true
+
+    thymeleaf:
+        check-template-location: false
+
+api:
+    key: '"FX001-FREE"'
+    version: '2020-12-29'
+management:
+    endpoint:
+        health:
+            show-details: always
+    endpoints:
+        web:
+            exposure:
+                include: '*'
+release:
+    version: 5.0.0
+
+server:
+    compression:
+        enabled: true
+        mime-types: application/json,application/xml,text/html,text/xml,text/plain,application/javascript,text/css
+        min-response-size: 2048
+    port: 8040
+
+eureka:
+    client:
+        serviceUrl:
+            defaultZone: http://localhost:8761/eureka/
+
+logging.level:
+    org.springframework.cloud.gateway: DEBUG
+    org.springframework.security: DEBUG
+    org.springframework.web.reactive.function.client: TRACE
