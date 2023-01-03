@@ -61,3 +61,5 @@ logging.level:
     org.springframework.cloud.gateway: DEBUG
     org.springframework.security: DEBUG
     org.springframework.web.reactive.function.client: TRACE
+
+
