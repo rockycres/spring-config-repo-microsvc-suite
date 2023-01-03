@@ -52,19 +52,10 @@ server:
         min-response-size: 2048
     port: 8060
 
-
-
-
-
-
-
-
-
 eureka:
     client:
         serviceUrl:
             defaultZone: http://localhost:8761/eureka/
-    client:
         fetch-registry: true
         
 logging.level:
