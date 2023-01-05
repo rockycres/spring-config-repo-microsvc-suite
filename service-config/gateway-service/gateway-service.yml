@@ -15,14 +15,6 @@ spring:
                 - Path=/v1/customer/**
               filters:
                 - RewritePath=/v1/customer/(?<segment>.*),/api-customer/v1/customer/$\{segment}
-            - id: travel
-              uri: lb://travel-service
-              predicates:
-                  - Path=/api-travel/v1/travel/**
-            - id: order
-              uri: lb://order-service
-              predicates:
-                  - Path=/api-order/v1/order/**
         
 eureka:
   client:
