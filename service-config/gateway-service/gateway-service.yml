@@ -47,7 +47,3 @@ management:
       web:
          exposure:
             include: gateway        
-            
-ribbon:
-  eureka:
-    enabled: true            
