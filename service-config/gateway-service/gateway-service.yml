@@ -14,8 +14,7 @@ spring:
               predicates:
                 - Path=/customer/**
               filters:
-                - StripPrefix=1    
-                - RewritePath=/api-customer/v1/customer/(?<path>.*), /$\{path}  
+                - RewritePath=/customer/(?<path>.*), /api-customer/v1/customer/$\{path}  
             - id: travel
               uri: lb://travel-service
               predicates:
