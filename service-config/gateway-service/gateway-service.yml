@@ -11,21 +11,15 @@ spring:
       - id: customer
         uri: lb://customer
         predicates:
-        - Path=/customer/**
-        filters:
-        - RewritePath=/customer/(?<path>.*), /api-customer/v1/customer/$\{path}
+        - Path=/api-customer/v1/customer/**
       - id: travel
         uri: lb://travel
         predicates:
-        - Path=/travel/**
-        filters:
-        - RewritePath=/travel/(?<path>.*), /api-travel/v1/travel/$\{path}
+        - Path=/api-travel/v1/travel/**
       - id: order
         uri: lb://order
         predicates:
-        - Path=/order/**
-        filters:
-        - RewritePath=/order/(?<path>.*), /api-order/v1/order/$\{path}   
+        - Path=/api-order/v1/order/**
 
 server:
     port: 8010
