@@ -10,11 +10,12 @@ spring:
               lowerCaseServiceId: true
           routes:        
             - id: customer-service
-              uri: lb://CUSTOMER-SERVICE/api-customer/v1/customer/
+              uri: lb://CUSTOMER-SERVICE
               predicates:
-                - Path=/api-customer/v1/customer/**
+                - Path=/customer/**
               filters:
                 - StripPrefix=1    
+                - RewritePath=/api-customer/v1/customer/(?<path>.*), /$\{path}  
             - id: travel
               uri: lb://travel-service
               predicates:
