@@ -10,7 +10,7 @@ spring:
               lowerCaseServiceId: true
           routes:        
             - id: customer-service
-              uri: lb://CUSTOMER-SERVICE
+              uri: lb://CUSTOMER-SERVICE/api-customer/v1/customer/
               predicates:
                   - Path=/api-customer/v1/customer/**
             - id: travel
@@ -21,7 +21,8 @@ spring:
               uri: lb://order-service
               predicates:
                   - Path=/api-order/v1/order/**
-           
+            filters:
+              - StripPrefix=0
         
 eureka:
   client:
