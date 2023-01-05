@@ -11,7 +11,7 @@ spring:
           lower-case-service-id: true
       routes:
       - id: customer
-        uri: lb://customer-service
+        uri: http://customer-service
         predicates:
         - Path=/api-customer/v1/customer/**
       - id: travel
