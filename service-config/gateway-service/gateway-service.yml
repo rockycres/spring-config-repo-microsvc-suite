@@ -13,15 +13,17 @@ spring:
       - id: customer-service
         uri: lb://customer-service
         predicates:
-        - Path=/api-customer/v1/customer/**
+            - Path=/api-customer/v1/customer/**
+        filters:
+            - StripPrefix=1
       - id: travel
         uri: lb://travel-service
         predicates:
-        - Path=/api-travel/v1/travel/**
+            - Path=/api-travel/v1/travel/**
       - id: order
         uri: lb://order-service
         predicates:
-        - Path=/api-order/v1/order/**
+            - Path=/api-order/v1/order/**
 
 server:
     port: 8010
