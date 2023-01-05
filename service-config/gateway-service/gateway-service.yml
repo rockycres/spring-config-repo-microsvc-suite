@@ -17,7 +17,7 @@ spring:
         predicates:
         - Path=/api-travel/v1/travel/**
       - id: order
-        uri: lb://travel-service
+        uri: lb://order-service
         predicates:
         - Path=/api-order/v1/order/**
 
