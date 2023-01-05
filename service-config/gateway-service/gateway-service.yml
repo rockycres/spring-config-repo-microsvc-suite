@@ -49,5 +49,4 @@ management:
 
 logging:
   level:
-    root: DEBUG
       org.springframework: DEBUG
