@@ -9,20 +9,19 @@ spring:
         locator:
           enabled: true
           lower-case-service-id: true
-      routes:
-        
-      - id: customer-service
-        uri: "http://localhost:8020"
-        predicates:
-            - Path=/api-customer/v1/customer/**
-      - id: travel
-        uri: lb://travel-service
-        predicates:
-            - Path=/api-travel/v1/travel/**
-      - id: order
-        uri: lb://order-service
-        predicates:
-            - Path=/api-order/v1/order/**
+      routes:        
+          - id: customer-service
+            uri: "http://localhost:8020"
+            predicates:
+                - Path=/api-customer/v1/customer/**
+          - id: travel
+            uri: lb://travel-service
+            predicates:
+                - Path=/api-travel/v1/travel/**
+          - id: order
+            uri: lb://order-service
+            predicates:
+                - Path=/api-order/v1/order/**
 
 server:
     port: 8010
