@@ -13,11 +13,11 @@ spring:
         predicates:
         - Path=/api-customer/v1/customer/**
       - id: travel
-        uri: lb://travel
+        uri: lb://travel-service
         predicates:
         - Path=/api-travel/v1/travel/**
       - id: order
-        uri: lb://order
+        uri: lb://travel-service
         predicates:
         - Path=/api-order/v1/order/**
 
