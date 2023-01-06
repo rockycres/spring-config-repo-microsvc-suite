@@ -12,11 +12,21 @@ spring:
             - id: customer-service
               uri: lb://CUSTOMER-SERVICE
               predicates:
-                - Path=/v1/customer/**
+                - Path=/api-customer/v1/customer/**
               filters:
-                - RewritePath=/v1/customer/(?<segment>.*),/api-customer/v1/customer/$\{segment}
-
-
+                - name: RequestRateLimiter
+                args:
+                    redis-rate-limiter.replenishRate: 1
+                    redis-rate-limiter.burstCapacity: 60
+                    redis-rate-limiter.requestedTokens: 15
+            - id: travel-service
+              uri: lb://TRAVEL-SERVICE
+              predicates:
+                - Path=/api-travel/v1/travel/**
+            - id: order-service
+              uri: lb://ORDER-SERVICE
+              predicates:
+                - Path=/api-order/v1/order/**                
 eureka:
   client:
     service-url:
@@ -32,8 +42,7 @@ server:
 logging:
   pattern: 
     console: "%d{yyyy-MM-dd HH:mm:ss} ${LOG_LEVEL_PATTERN:-%5p} %m%n"
-  level:
-      org.springframework: DEBUG
+
 
 management:
    endpoint:
