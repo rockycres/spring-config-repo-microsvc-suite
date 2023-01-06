@@ -68,7 +68,7 @@ resilience4j.circuitbreaker:
       waitDurationInOpenState: 1s
       failureRateThreshold: 50
       eventConsumerBufferSize: 10
-      recordFailurePredicate: io.github.romeh.services.gateway.HttpInternalServicePredicate
+##      recordFailurePredicate: io.github.romeh.services.gateway.HttpInternalServicePredicate
 
 
 management:
