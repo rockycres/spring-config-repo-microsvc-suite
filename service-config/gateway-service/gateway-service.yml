@@ -14,11 +14,11 @@ spring:
               predicates:
                 - Path=/api-customer/v1/customer/**
               filters:
-                - name: RequestRateLimiter
-                args:
-                    redis-rate-limiter.replenishRate: 1
-                    redis-rate-limiter.burstCapacity: 60
-                    redis-rate-limiter.requestedTokens: 15
+            - name: RequestRateLimiter
+              args:
+                redis-rate-limiter.replenishRate: 1
+                redis-rate-limiter.burstCapacity: 60
+                redis-rate-limiter.requestedTokens: 15
             - id: travel-service
               uri: lb://TRAVEL-SERVICE
               predicates:
