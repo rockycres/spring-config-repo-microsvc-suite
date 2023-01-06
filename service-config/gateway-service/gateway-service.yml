@@ -19,14 +19,7 @@ spring:
                 redis-rate-limiter.replenishRate: 1
                 redis-rate-limiter.burstCapacity: 60
                 redis-rate-limiter.requestedTokens: 15
-            - id: travel-service
-              uri: lb://TRAVEL-SERVICE
-              predicates:
-                - Path=/api-travel/v1/travel/**
-            - id: order-service
-              uri: lb://ORDER-SERVICE
-              predicates:
-                - Path=/api-order/v1/order/**                
+                       
 eureka:
   client:
     service-url:
