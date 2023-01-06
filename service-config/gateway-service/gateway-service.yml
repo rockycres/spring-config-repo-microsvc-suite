@@ -45,6 +45,6 @@ management:
          exposure:
             include: gateway        
 
-  health:
-    redis:
-      enabled: true
+   health:
+     redis:
+       enabled: true
