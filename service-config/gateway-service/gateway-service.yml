@@ -14,10 +14,7 @@ spring:
               predicates:
                 - Path=/api-customer/v1/customer/**
              
-    redis:
-        host: localhost
-        port: 6379
-        password: eYVX7EwVmmxKPCDmwMtyKVge8oLd2t81                
+
 eureka:
   client:
     service-url:
@@ -34,6 +31,45 @@ logging:
   pattern: 
     console: "%d{yyyy-MM-dd HH:mm:ss} ${LOG_LEVEL_PATTERN:-%5p} %m%n"
 
+logging.level.io.github.resilience4j: DEBUG
+
+resilience4j.circuitbreaker:
+  configs:
+    default:
+      slidingWindowSize: 10
+      minimumNumberOfCalls: 5
+      permittedNumberOfCallsInHalfOpenState: 3
+      automaticTransitionFromOpenToHalfOpenEnabled: true
+      waitDurationInOpenState: 2s
+      failureRateThreshold: 5
+      eventConsumerBufferSize: 10
+      slowCallDurationThreshold: 200ms
+      slowCallRateThreshold: 30
+      recordExceptions:
+        - org.springframework.web.client.HttpServerErrorException
+        - java.io.IOException
+      ignoreExceptions:
+        - java.lang.IllegalStateException
+    shared:
+      slidingWindowSize: 100
+      permittedNumberOfCallsInHalfOpenState: 30
+      waitDurationInOpenState: 1s
+      failureRateThreshold: 50
+      eventConsumerBufferSize: 10
+      ignoreExceptions:
+        - java.lang.IllegalStateException
+  instances:
+    customer-service:
+      baseConfig: default
+    order-service:
+      slidingWindowSize: 10
+      minimumNumberOfCalls: 10
+      permittedNumberOfCallsInHalfOpenState: 3
+      waitDurationInOpenState: 1s
+      failureRateThreshold: 50
+      eventConsumerBufferSize: 10
+      recordFailurePredicate: io.github.romeh.services.gateway.HttpInternalServicePredicate
+
 
 management:
    endpoint:
@@ -45,6 +81,3 @@ management:
             include: "*"
 
 
-   health:
-     redis:
-       enabled: true
