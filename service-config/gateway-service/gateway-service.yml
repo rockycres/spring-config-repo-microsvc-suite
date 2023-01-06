@@ -19,6 +19,10 @@ spring:
                     redis-rate-limiter.replenishRate: 500
                     redis-rate-limiter.burstCapacity: 1000
                     redis-rate-limiter.requestedTokens: 1          
+    redis:
+        host: localhost
+        port: 6379
+        password: eYVX7EwVmmxKPCDmwMtyKVge8oLd2t81                
 eureka:
   client:
     service-url:
