@@ -47,9 +47,7 @@ resilience4j.circuitbreaker:
       slowCallRateThreshold: 100
       slowCallDurationThreshold: 2000
       failureRateThreshold: 50
-      ignoreExceptions:
-        - com.jsession4d.feignclient.BusinessException
-
+   
 management:
   endpoint:
     health:
