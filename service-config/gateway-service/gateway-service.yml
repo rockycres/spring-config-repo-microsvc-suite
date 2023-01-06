@@ -15,11 +15,10 @@ spring:
                 - Path=/api-customer/v1/customer/**
               filters:
                 - name: RequestRateLimiter
-                args:
-                    redis-rate-limiter.replenishRate: 1
-                    redis-rate-limiter.burstCapacity: 60
-                    redis-rate-limiter.requestedTokens: 15
-                       
+                  args:
+                    redis-rate-limiter.replenishRate: 500
+                    redis-rate-limiter.burstCapacity: 1000
+                    redis-rate-limiter.requestedTokens: 1          
 eureka:
   client:
     service-url:
@@ -46,4 +45,6 @@ management:
          exposure:
             include: gateway        
 
-
+  health:
+    redis:
+      enabled: true
