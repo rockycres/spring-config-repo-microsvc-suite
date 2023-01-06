@@ -33,3 +33,32 @@ logging.level:
     org.springframework.cloud.gateway: DEBUG
     org.springframework.security: DEBUG
     org.springframework.web.reactive.function.client: TRACE
+
+
+resilience4j.circuitbreaker:
+  instances:
+    travelClientCircuitBreaker:
+      registerHealthIndicator: true
+      slidingWindowSize: 60
+      slidingWindowType: TIME_BASED
+      permittedNumberOfCallsInHalfOpenState: 3
+      minimumNumberOfCalls: 10
+      waitDurationInOpenState: 5s
+      slowCallRateThreshold: 100
+      slowCallDurationThreshold: 2000
+      failureRateThreshold: 50
+      ignoreExceptions:
+        - com.jsession4d.feignclient.BusinessException
+
+management:
+  endpoint:
+    health:
+      show-details: always         #To show all details in /health endpoint.
+
+  endpoints:
+      web:
+         exposure:
+            include: "*"
+
+management.health.circuitbreakers.enabled: true #To show Circuit Breaker status
+
