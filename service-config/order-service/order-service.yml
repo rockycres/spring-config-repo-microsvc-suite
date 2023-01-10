@@ -13,7 +13,7 @@ spring:
         password: guest    
 
 server:
-    port: 8030
+    port: 8070
 
 api:
     key: '"FX001-FREE"'
